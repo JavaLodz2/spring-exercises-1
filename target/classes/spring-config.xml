@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="bean" class="pl.sda.beans.Bean">
+        <property name="code" value="00001"/>
+        <property name="version" ref="version"/>
+        <property name="subBeans">
+            <list>
+                <ref bean="subBean1"/>
+                <ref bean="subBean2"/>
+            </list>
+        </property>
+        <property name="countryMap">
+            <map>
+                <entry key="Poland" value-ref="country1"/>
+                <entry key="Japan" value-ref="country2"/>
+                <entry key="Egypt" value-ref="country3"/>
+            </map>
+        </property>
+        <constructor-arg type="java.util.List">
+            <list>
+                <value>00020</value>
+                <value>15000</value>
+                <value>54000</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="version" class="pl.sda.beans.BeanVersion">
+        <constructor-arg type="int" value="1"/>
+    </bean>
+
+    <bean name="childBean" parent="bean">
+        <property name="code" value="00010"/>
+    </bean>
+
+    <bean name="subBean1" class="pl.sda.beans.SubBean">
+        <property name="name" value="subBean1"/>
+    </bean>
+
+    <bean name="subBean2" class="pl.sda.beans.SubBean">
+        <property name="name" value="subBean2"/>
+    </bean>
+
+    <bean name="country1" class="pl.sda.beans.CountryBean">
+        <property name="name" value="Poland"/>
+        <property name="isoCode" value="001"/>
+        <property name="continent" value="EUROPE"/>
+    </bean>
+
+    <bean name="country2" class="pl.sda.beans.CountryBean">
+        <property name="name" value="Japan"/>
+        <property name="isoCode" value="010"/>
+        <property name="continent" value="ASIA"/>
+    </bean>
+
+    <bean name="country3" class="pl.sda.beans.CountryBean">
+        <property name="name" value="Egypt"/>
+        <property name="isoCode" value="100"/>
+        <property name="continent" value="AFRICA"/>
+    </bean>
+
+
+</beans>
+        <!--<alias name="test" alias="aliasTest"/>-->
+        <!--<bean id="test" class="pl.sda.beans.Bean" init-method="testMethod">-->
+        <!--<property name="name" value="TestName"/>-->
+        <!--</bean>-->
+
+        <!--<bean id="test2" parent="test">-->
+        <!--<property name="name" value="TestName2"/>-->
+        <!--</bean>-->
+
+        <!--<bean id="message"-->
+        <!--class="pl.sda.beans.Message">-->
+        <!--<property name="text" value="Hello"/>-->
+        <!--<property name="logins">-->
+        <!--<list>-->
+        <!--<value>jan.kowalski</value>-->
+        <!--<value>anna.chmiel</value>-->
+        <!--</list>-->
+        <!--</property>-->
+        <!--<property name="priority" value="1"/>-->
+        <!--</bean>-->
+
+        <!--<bean id="user" class="pl.sda.beans.User">-->
+        <!--<property name="name" value="Jan"/>-->
+        <!--<property name="room" ref="roomBean"/>-->
+        <!--</bean>-->
+
+        <!--<bean id="roomBean" class="pl.sda.beans.Room">-->
+        <!--<property name="roomNumber" value="27C"/>-->
+        <!--<property name="roomCapacity" value="2"/>-->
+        <!--</bean>-->
+
+        <!--<bean id="myBean" class="pl.sda.beans.NewBean">-->
+        <!--<constructor-arg ref="firstBean"/>-->
+        <!--<constructor-arg ref="secondBean"/>-->
+        <!--<constructor-arg type="int" value="1"/>-->
+        <!--</bean>-->
+
+        <!--<bean id="firstBean" class="pl.sda.beans.FirstBean"/>-->
+        <!--<bean id="secondBean" class="pl.sda.beans.SecondBean"/>-->
+
+        <!--</beans>-->
